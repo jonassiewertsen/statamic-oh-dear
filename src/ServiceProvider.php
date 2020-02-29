@@ -19,7 +19,7 @@ class ServiceProvider extends AddonServiceProvider
     {
         parent::boot();
 
-//        $this->loadViewsFrom(__DIR__ . '/../resources/views/', 'howToAddon');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views/', 'oh-dear');
         $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'oh-dear');
 //        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'howToAddon');
 //
