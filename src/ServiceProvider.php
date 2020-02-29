@@ -33,16 +33,16 @@ class ServiceProvider extends AddonServiceProvider
 //            ], 'How To Addon config file');
 //        }
 //
-//        $this->createNavigation();
+        $this->bootNavigation();
     }
 
-    private function createNavigation(): void
+    private function bootNavigation(): void
     {
-//        Nav::extend(function ($nav) {
-//            $nav->create(__('howToAddon::menu.videos'))
-//                ->icon('assets')
-//                ->section('How To')
-//                ->route('howToAddon.index');
-//        });
+        Nav::extend(function ($nav) {
+            $nav->create('Oh Dear')
+                ->icon('earth')
+                ->section('Tools')
+                ->route('oh-dear.index');
+        });
     }
 }
