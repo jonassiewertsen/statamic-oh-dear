@@ -1,0 +1,41 @@
+{
+  "name": "jonassiewertsen/statamic-oh-dear",
+  "description": "A Statamic Addon to integrate the Oh Dear ap into your control panel",
+  "keywords": [
+    "Statamic",
+    "Addon",
+    "Oh",
+    "Dear"
+  ],
+  "license": "proprietary",
+  "type": "statamic-addon",
+  "autoload": {
+    "psr-4": {
+      "Jonassiewertsen\\OhDear\\": "src"
+    }
+  },
+  "authors": [
+    {
+      "name": "Jonas Siewertsen"
+    }
+  ],
+  "support": {
+    "email": "mail@jonassiewertsen.com"
+  },
+  "require": {
+    "php": "^7.4",
+    "illuminate/support": "6.*",
+    "statamic/cms": "3.*@beta"
+  },
+  "extra": {
+    "statamic": {
+      "name": "Oh Dear",
+      "description": "A Statamic Addon to integrate the Oh Dear ap into your control panel"
+    },
+    "laravel": {
+      "providers": [
+        "Jonassiewertsen\\OhDear\\ServiceProvider"
+      ]
+    }
+  }
+}
