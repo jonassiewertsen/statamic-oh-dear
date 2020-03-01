@@ -21,18 +21,18 @@ class ServiceProvider extends AddonServiceProvider
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views/', 'oh-dear');
         $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'oh-dear');
-//        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'howToAddon');
-//
-//        if ($this->app->runningInConsole()) {
-//            $this->publishes([
-//                __DIR__.'/../resources/lang' => resource_path('lang/vendor/jonassiewertsen/howToAddon/'),
-//            ], 'How To Addon lang file');
-//
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'oh-dear');
+
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../resources/lang' => resource_path('lang/vendor/jonassiewertsen/ohDear/'),
+            ], 'Statamic Oh Dear lang file');
+
             $this->publishes([
                 __DIR__ . '/../config/config.php' => config_path('statamic/oh-dear.php'),
             ], 'Statamic Oh Dear config file');
-//        }
-//
+        }
+
         $this->bootNavigation();
     }
 
