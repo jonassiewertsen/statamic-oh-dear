@@ -10,7 +10,7 @@
         'title'     => __('oh-dear::lang.uptime'),
         'visual'    => __('oh-dear::lang.site_up'),
         'text'      => __('oh-dear::lang.uptime_success_message', ['time' => 'something']),
-        'link_url'  => '#',
+        'link_url'  => cp_route('oh-dear.uptime'),
         'link_text' => __('oh-dear::lang.view_latest_report'),
     ])
 
