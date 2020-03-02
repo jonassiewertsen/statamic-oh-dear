@@ -17,50 +17,26 @@
 
         <h2 class="font-bold mt-4 mb-1">Past 7 days</h2>
         <table class="w-full pt-1">
-            <tr>
-                <td class="w-1/4">2020-03-02</td>
-                <td>100%</td>
-            </tr>
-            <tr>
-                <td>2020-03-01</td>
-                <td>100%</td>
-            </tr>
-            <tr>
-                <td>2020-02-29</td>
-                <td>100%</td>
-            </tr>
-            <tr>
-                <td>2020-02-28</td>
-                <td>100%</td>
-            </tr>
-            <tr>
-                <td>2020-02-27</td>
-                <td>100%</td>
-            </tr>
-            <tr>
-                <td>2020-02-26</td>
-                <td>100%</td>
-            </tr>
-            <tr>
-                <td>2020-02-25</td>
-                <td>100%</td>
-            </tr>
+            @forelse ($pastDays as $day)
+                <tr>
+                    <td class="w-1/4">{{ $day->datetime }}</td>
+                    <td>{{ $day->uptimePercentage }}%</td>
+                </tr>
+             @empty
+                No Entries yet
+            @endforelse
         </table>
 
         <h2 class="font-bold mt-4 mb-1">Past 12 months</h2>
         <table class="w-full pt-1">
-            <tr>
-                <td class="w-1/4">2020-03</td>
-                <td>100%</td>
-            </tr>
-            <tr>
-                <td class="w-1/4">2020-02</td>
-                <td>100%</td>
-            </tr>
-            <tr>
-                <td class="w-1/4">2020-01</td>
-                <td>100%</td>
-            </tr>
+            @forelse ($pastMonths as $month)
+                <tr>
+                    <td class="w-1/4">{{ $month->datetime }}</td>
+                    <td>{{ $month->uptimePercentage }}%</td>
+                </tr>
+            @empty
+                No Entries yet
+            @endforelse
         </table>
 
         <h2 class="font-bold mt-4 mb-1">Latest downtime periods</h2>
