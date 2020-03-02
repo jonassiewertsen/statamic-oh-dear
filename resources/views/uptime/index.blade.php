@@ -48,21 +48,17 @@
                     <th class="w-1/5 text-left">Duration</th>
                 </tr>
             </thead>
-            <tr>
-                <td>2020-01-10 22:27:24</td>
-                <td>12020-01-10 22:29:37</td>
-                <td>2m</td>
-            </tr>
-            <tr>
-                <td>2020-01-10 22:27:24</td>
-                <td>12020-01-10 22:29:37</td>
-                <td>2m</td>
-            </tr>
-            <tr>
-                <td>2020-01-10 22:27:24</td>
-                <td>12020-01-10 22:29:37</td>
-                <td>2m</td>
-            </tr>
+            @forelse($downtimes as $downtime)
+                <tr>
+                    <th class="w-2/5 text-left">{{ $downtime->startedAt }}</th>
+                    <th class="w-2/5 text-left">{{ $downtime->endedAt }}</th>
+                    <th class="w-1/5 text-left">Duration</th>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="3">No downtimes detected in the past 6 month</td>
+                </tr>
+            @endforelse
         </table>
     </div>
 @endsection

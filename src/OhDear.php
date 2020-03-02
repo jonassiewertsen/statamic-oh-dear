@@ -29,4 +29,10 @@ class OhDear {
             $end->format('YmdHis'),
             $split);
     }
+
+    public function downtime($start, $end) {
+        return $this->site->downtime(
+            $start->format('YmdHis'),
+            $end->format('YmdHis'));
+    }
 }

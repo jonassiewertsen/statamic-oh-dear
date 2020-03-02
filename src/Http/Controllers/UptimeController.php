@@ -8,9 +8,10 @@ class UptimeController {
     public function index() {
         $ohdear = new OhDear;
 
-        $pastDays = $ohdear->uptime(now()->subDays(6), now(), 'day');
+        $pastDays   = $ohdear->uptime(now()->subDays(6), now(), 'day');
         $pastMonths = $ohdear->uptime(now()->subMonths(11), now(), 'month');
+        $downtimes  = $ohdear->downtime(now()->subMonths(1), now());
 
-        return view('oh-dear::uptime.index', compact('pastDays', 'pastMonths'));
+        return view('oh-dear::uptime.index', compact('pastDays', 'pastMonths', 'downtimes'));
     }
 }
