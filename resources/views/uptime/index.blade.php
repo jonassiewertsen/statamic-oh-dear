@@ -11,11 +11,11 @@
 
         @if ($uptime['latest_run_result'])
             @component('oh-dear::partials.info', ['type' => 'success'])
-                <a href="{{ $url["href"] }}" class="underline">{{ $url["name"] }}</a> is up.
+                <a href="{{ $url["href"] }}" target="_blank" class="underline">{{ $url["name"] }}</a> is up.
             @endcomponent
         @else
             @component('oh-dear::partials.info', ['type' => 'failed'])
-                <a href="{{ $url["href"] }}" class="underline">{{ $url["name"] }}</a> is down.
+                <a href="{{ $url["href"] }}" target="_blank" class="underline">{{ $url["name"] }}</a> is down.
             @endcomponent
         @endif
 
