@@ -9,6 +9,7 @@
 
     <div class="card pl-4 py-4">
 
+        <!-- TODO: make is up dynamically -->
         <p class="rounded border-l-4 border-green-light pl-1" style="background-color: #f0fff4;">
             <span class="inline-block items-center px-1 py-1">
                 <a href="#" class="underline">jonassiewertsen.com</a> is up.
@@ -49,11 +50,13 @@
                 </tr>
             </thead>
             @forelse($downtimes as $downtime)
-                <tr>
-                    <th class="w-2/5 text-left">{{ $downtime->startedAt }}</th>
-                    <th class="w-2/5 text-left">{{ $downtime->endedAt }}</th>
-                    <th class="w-1/5 text-left">Duration</th>
-                </tr>
+                <tbody>
+                    <tr>
+                        <th class="w-2/5 text-left font-normal">{{ $downtime->startedAt }}</th>
+                        <th class="w-2/5 text-left font-normal">{{ $downtime->endedAt }}</th>
+                        <th class="w-1/5 text-left font-normal">Duration</th>
+                    </tr>
+                </tbody>
             @empty
                 <tr>
                     <td colspan="3">No downtimes detected in the past 6 month</td>
