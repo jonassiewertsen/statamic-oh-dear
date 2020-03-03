@@ -48,9 +48,23 @@ class OhDear {
     }
 
     public function downtime($start, $end) {
-        return $this->site->downtime(
+        $downtime =  $this->site->downtime(
             $start->format('YmdHis'),
             $end->format('YmdHis'));
+
+        $downtime = collect($downtime);
+
+       return $downtime->transform(function($downtime) {
+           $startedAt   = Carbon::parse($downtime->startedAt);
+           $endedAt     = Carbon::parse($downtime->endedAt);
+           $duration    = $startedAt->diffInMinutes($endedAt);
+
+           return [
+               'started_at' => $downtime->startedAt,
+               'ended_at'   => $downtime->endedAt,
+               'duration'   => $duration,
+           ];
+        });
     }
 
     public function url() {

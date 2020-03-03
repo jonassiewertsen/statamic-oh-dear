@@ -55,9 +55,9 @@
             <tbody>
                 @forelse($downtimes as $downtime)
                     <tr class="border-b border-white hover:border-grey-40 cursor-default">
-                        <td class="w-2/5 text-left font-normal pt-1">{{ $downtime->startedAt }}</td>
-                        <td class="w-2/5 text-left font-normal pt-1">{{ $downtime->endedAt }}</td>
-                        <td class="w-1/5 text-left font-normal pt-1">Duration</td>
+                        <td class="w-2/5 text-left font-normal pt-1">{{ $downtime['started_at'] }}</td>
+                        <td class="w-2/5 text-left font-normal pt-1">{{ $downtime['ended_at'] }}</td>
+                        <td class="w-1/5 text-left font-normal pt-1">{{ $downtime['duration'] }}m</td>
                     </tr>
                 @empty
                     <tr>
