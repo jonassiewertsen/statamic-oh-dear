@@ -1,4 +1,4 @@
-@if ($brokenLinksCheck['latest_run_result'] === 'succeeded')
+@if ($brokenLinksCheck)
     @component('oh-dear::partials.info', ['type' => 'success'])
         No broken links found on {{ $url['name'] }}
     @endcomponent

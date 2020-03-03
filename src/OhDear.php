@@ -90,25 +90,46 @@ class OhDear {
         return $this->site->checks;
     }
 
-    // TODO: Refactor all checks to boolean
     public function uptimeCheck() {
         $uptime = collect($this->site->checks)
                     ->where('type', 'uptime');
 
-        return $uptime->first()->attributes;
+        $uptime = $uptime->first()->attributes;
+
+        return $this->succeeded($uptime['latest_run_result']);
     }
 
     public function brokenLinksCheck() {
-        $uptime = collect($this->site->checks)
+        $links = collect($this->site->checks)
             ->where('type', 'broken_links');
 
-        return $uptime->first()->attributes;
+        $links =  $links->first()->attributes;
+
+        return $this->succeeded($links['latest_run_result']);
     }
 
     public function mixedContentCheck() {
-        $uptime = collect($this->site->checks)
+        $contents = collect($this->site->checks)
             ->where('type', 'mixed_content');
 
-        return $uptime->first()->attributes;
+        $contents = $contents->first()->attributes;
+
+        return $this->succeeded($contents['latest_run_result']);
+    }
+
+    public function certificateCheck() {
+        $certificate = collect($this->site->checks)
+            ->where('type', 'certificate_health');
+
+        $certificate = $certificate->first()->attributes;
+
+        return $this->succeeded($certificate['latest_run_result']);
+    }
+
+    private function succeeded($value) {
+        if (! $value === 'succeeded') {
+            return false;
+        }
+        return true;
     }
 }

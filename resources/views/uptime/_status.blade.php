@@ -1,4 +1,4 @@
-@if ($uptime['latest_run_result'] === 'succeeded')
+@if ($uptime)
     @component('oh-dear::partials.info', ['type' => 'success'])
         <a href="{{ $url["href"] }}" target="_blank" class="underline">{{ $url["name"] }}</a> is up.
     @endcomponent
