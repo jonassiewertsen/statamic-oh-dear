@@ -19,8 +19,8 @@
         <table class="w-full pt-1">
             @forelse ($pastDays as $day)
                 <tr>
-                    <td class="w-1/4">{{ $day->datetime }}</td>
-                    <td>{{ $day->uptimePercentage }}%</td>
+                    <td class="w-1/4">{{ $day['datetime'] }}</td>
+                    <td>{{ $day['uptimePercentage'] }}%</td>
                 </tr>
              @empty
                 No Entries yet
@@ -31,8 +31,8 @@
         <table class="w-full pt-1">
             @forelse ($pastMonths as $month)
                 <tr>
-                    <td class="w-1/4">{{ $month->datetime }}</td>
-                    <td>{{ $month->uptimePercentage }}%</td>
+                    <td class="w-1/4">{{ $month['datetime'] }}</td>
+                    <td>{{ $month['uptimePercentage'] }}%</td>
                 </tr>
             @empty
                 No Entries yet

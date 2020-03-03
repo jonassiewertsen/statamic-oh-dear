@@ -2,6 +2,7 @@
 
 namespace Jonassiewertsen\OhDear;
 
+use Illuminate\Support\Carbon;
 use \OhDear\PhpSdk\Ohdear as OhdearSDK;
 
 class OhDear {
@@ -24,10 +25,26 @@ class OhDear {
     }
 
     public function uptime($start, $end, $split) {
-        return $this->site->uptime(
+        $uptime = $this->site->uptime(
             $start->format('YmdHis'),
             $end->format('YmdHis'),
             $split);
+
+        $uptime = collect($uptime);
+
+        $uptime->transform(function($entry) {
+
+            // TODO: Make format customizable. Loalized?
+            // TODO: Carbon format into helper function?
+            $datetime = Carbon::parse($entry->datetime)->format('Y-m-d');
+
+            return [
+              'datetime' => $datetime,
+              'uptimePercentage' => $entry->uptimePercentage,
+            ];
+        });
+
+        return $uptime;
     }
 
     public function downtime($start, $end) {
