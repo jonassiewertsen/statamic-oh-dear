@@ -10,18 +10,16 @@
     <div class="card pl-4 py-4">
 
         @if ($uptime['latest_run_result'])
-            <!-- refactor this notification into component -->
-            <p class="rounded border-l-4 border-green-light pl-1" style="background-color: #f0fff4;">
-                <span class="inline-block items-center px-1 py-1">
-                    <a href="{{ $url['href'] }}" class="underline">{{ $url['name'] }}</a> is up.
-                </span>
-            </p>
+            <!-- TODO: LINK ????? -->
+            @include('oh-dear::partials.info', [
+                'type' => 'success',
+                'text' => '<a href="{{ $url["href"] }}" class="underline">{{ $url["name"] }}</a> is up.',
+            ])
         @else
-            <p class="rounded bg-red-lighter border-l-4 border-red-light pl-1">
-                <span class="inline-block items-center px-1 py-1">
-                    <a href="{{ $url['href'] }}" class="underline">{{ $url['name'] }}</a> is down.
-                </span>
-            </p>
+                @include('oh-dear::partials.info', [
+                   'type' => 'failed',
+                   'text' => '<a href="{{ $url["href"] }}" class="underline">{{ $url["name"] }}</a> is down.',
+               ])
         @endif
 
         <h2 class="font-bold mt-4 mb-1">Past 7 days</h2>
