@@ -67,6 +67,10 @@ class OhDear {
         });
     }
 
+    public function brokenLinks() {
+        return $this->site->brokenLinks();
+    }
+
     public function url() {
         return [
             'name' => $this->site->sortUrl,

@@ -8,6 +8,9 @@ class BrokenLinksController {
     public function index() {
         $ohdear = new OhDear;
 
-        return view('oh-dear::brokenLinks.index');
+        $brokenLinks = $ohdear->brokenLinks();
+        $brokenLinks = [];
+
+        return view('oh-dear::brokenLinks.index', compact('brokenLinks'));
     }
 }

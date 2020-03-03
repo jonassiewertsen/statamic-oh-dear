@@ -4,6 +4,6 @@
     @endcomponent
 {{--@else--}}
     @component('oh-dear::partials.info', ['type' => 'failed'])
-        Nooo
+        Broken links found.
     @endcomponent
 {{--@endif--}}

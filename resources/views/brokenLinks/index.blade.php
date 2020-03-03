@@ -10,5 +10,9 @@
 
         @include('oh-dear::brokenLinks._status')
 
+        @if($brokenLinks)
+            @include('oh-dear::brokenLinks._links')
+        @endif
+
     @endcomponent
 @endsection
