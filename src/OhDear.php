@@ -127,9 +127,9 @@ class OhDear {
     }
 
     private function succeeded($value) {
-        if (! $value === 'succeeded') {
-            return false;
+        if ($value === 'succeeded') {
+            return true;
         }
-        return true;
+        return false;
     }
 }
