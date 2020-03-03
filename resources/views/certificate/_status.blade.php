@@ -1,4 +1,4 @@
-@if (true)
+@if ($certificateCheck)
     @component('oh-dear::partials.info', ['type' => 'success'])
         No certificate problems detected on {{ $url['name'] }}.
     @endcomponent
