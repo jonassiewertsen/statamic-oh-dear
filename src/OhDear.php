@@ -88,4 +88,11 @@ class OhDear {
 
         return $uptime->first()->attributes;
     }
+
+    public function brokenLinksCheck() {
+        $uptime = collect($this->site->checks)
+            ->where('type', 'broken_links');
+
+        return $uptime->first()->attributes;
+    }
 }
