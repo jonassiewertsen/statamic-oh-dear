@@ -26,7 +26,7 @@
         'title'     => __('oh-dear::lang.mixed_content'),
         'visual'    => __('oh-dear::lang.secure'),
         'text'      => __('oh-dear::lang.mixed_content_success_message', ['time' => 'something']),
-        'link_url'  => '#',
+        'link_url'  => cp_route('oh-dear.mixed-content'),
         'link_text' => __('oh-dear::lang.view_latest_report'),
     ])
 

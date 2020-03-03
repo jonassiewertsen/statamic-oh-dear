@@ -71,6 +71,10 @@ class OhDear {
         return $this->site->brokenLinks();
     }
 
+    public function mixedContent() {
+        return $this->site->mixedContent();
+    }
+
     public function url() {
         return [
             'name' => $this->site->sortUrl,
@@ -92,6 +96,13 @@ class OhDear {
     public function brokenLinksCheck() {
         $uptime = collect($this->site->checks)
             ->where('type', 'broken_links');
+
+        return $uptime->first()->attributes;
+    }
+
+    public function mixedContentCheck() {
+        $uptime = collect($this->site->checks)
+            ->where('type', 'mixed_content');
 
         return $uptime->first()->attributes;
     }
