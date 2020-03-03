@@ -100,6 +100,7 @@ class OhDear {
         return $uptime->first()->attributes;
     }
 
+    // TODO: Refactor checks to return booleans
     public function mixedContentCheck() {
         $uptime = collect($this->site->checks)
             ->where('type', 'mixed_content');
