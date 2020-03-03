@@ -18,7 +18,7 @@
         'title'     => __('oh-dear::lang.broken_links'),
         'visual'    => __('oh-dear::lang.none'),
         'text'      => __('oh-dear::lang.broken_links_success_message', ['time' => 'something']),
-        'link_url'  => '#',
+        'link_url'  => cp_route('oh-dear.broken-links'),
         'link_text' => __('oh-dear::lang.view_latest_report'),
     ])
 

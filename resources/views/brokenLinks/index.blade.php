@@ -3,16 +3,12 @@
 
 @section('content')
     @component('oh-dear::partials.card_header')
-        Uptime
+        Broken Links
     @endcomponent
 
     @component('oh-dear::partials.card')
 
-        @include('oh-dear::uptime._status')
-
-        @include('oh-dear::uptime._past_days')
-        @include('oh-dear::uptime._past_months')
-        @include('oh-dear::uptime._downtime')
+        @include('oh-dear::brokenLinks._status')
 
     @endcomponent
 @endsection
