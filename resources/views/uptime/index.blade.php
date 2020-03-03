@@ -10,16 +10,13 @@
     <div class="card pl-4 py-4">
 
         @if ($uptime['latest_run_result'])
-            <!-- TODO: LINK ????? -->
-            @include('oh-dear::partials.info', [
-                'type' => 'success',
-                'text' => '<a href="{{ $url["href"] }}" class="underline">{{ $url["name"] }}</a> is up.',
-            ])
+            @component('oh-dear::partials.info', ['type' => 'success'])
+                <a href="{{ $url["href"] }}" class="underline">{{ $url["name"] }}</a> is up.
+            @endcomponent
         @else
-                @include('oh-dear::partials.info', [
-                   'type' => 'failed',
-                   'text' => '<a href="{{ $url["href"] }}" class="underline">{{ $url["name"] }}</a> is down.',
-               ])
+            @component('oh-dear::partials.info', ['type' => 'failed'])
+                <a href="{{ $url["href"] }}" class="underline">{{ $url["name"] }}</a> is down.
+            @endcomponent
         @endif
 
         <h2 class="font-bold mt-4 mb-1">Past 7 days</h2>
