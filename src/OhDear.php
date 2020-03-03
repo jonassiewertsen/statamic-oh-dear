@@ -86,6 +86,7 @@ class OhDear {
         return $this->site->checks;
     }
 
+    // TODO: Refactor all checks to boolean
     public function uptimeCheck() {
         $uptime = collect($this->site->checks)
                     ->where('type', 'uptime');
@@ -100,7 +101,6 @@ class OhDear {
         return $uptime->first()->attributes;
     }
 
-    // TODO: Refactor checks to return booleans
     public function mixedContentCheck() {
         $uptime = collect($this->site->checks)
             ->where('type', 'mixed_content');
