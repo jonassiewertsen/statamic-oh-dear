@@ -11,7 +11,9 @@ class UptimeController {
         $pastDays   = $ohdear->uptime(now()->subDays(6), now(), 'day');
         $pastMonths = $ohdear->uptime(now()->subMonths(11), now(), 'month');
         $downtimes  = $ohdear->downtime(now()->subMonths(5), now());
+        $uptime     = $ohdear->uptimeCheck();
+        $url        = $ohdear->url();
 
-        return view('oh-dear::uptime.index', compact('pastDays', 'pastMonths', 'downtimes'));
+        return view('oh-dear::uptime.index', compact('pastDays', 'pastMonths', 'downtimes', 'uptime', 'url'));
     }
 }

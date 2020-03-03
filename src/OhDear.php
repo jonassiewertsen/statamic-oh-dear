@@ -52,4 +52,22 @@ class OhDear {
             $start->format('YmdHis'),
             $end->format('YmdHis'));
     }
+
+    public function url() {
+        return [
+            'name' => $this->site->sortUrl,
+            'href' => $this->site->url,
+        ];
+    }
+
+    public function checks() {
+        return $this->site->checks;
+    }
+
+    public function uptimeCheck() {
+        $uptime = collect($this->site->checks)
+                    ->where('type', 'uptime');
+
+        return $uptime->first()->attributes;
+    }
 }

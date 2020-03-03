@@ -9,12 +9,20 @@
 
     <div class="card pl-4 py-4">
 
-        <!-- TODO: make is up dynamically -->
-        <p class="rounded border-l-4 border-green-light pl-1" style="background-color: #f0fff4;">
-            <span class="inline-block items-center px-1 py-1">
-                <a href="#" class="underline">jonassiewertsen.com</a> is up.
-            </span>
-        </p>
+        @if ($uptime['latest_run_result'])
+            <!-- refactor this notification into component -->
+            <p class="rounded border-l-4 border-green-light pl-1" style="background-color: #f0fff4;">
+                <span class="inline-block items-center px-1 py-1">
+                    <a href="{{ $url['href'] }}" class="underline">{{ $url['name'] }}</a> is up.
+                </span>
+            </p>
+        @else
+            <p class="rounded bg-red-lighter border-l-4 border-red-light pl-1">
+                <span class="inline-block items-center px-1 py-1">
+                    <a href="{{ $url['href'] }}" class="underline">{{ $url['name'] }}</a> is down.
+                </span>
+            </p>
+        @endif
 
         <h2 class="font-bold mt-4 mb-1">Past 7 days</h2>
         <table class="w-full pt-1">
