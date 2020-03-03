@@ -34,7 +34,7 @@
         'title'     => 'Certificate health',
         'visual'    => __('oh-dear::lang.healthy'),
         'text'      => __('oh-dear::lang.certificate_health_success_message', ['time' => 'something']),
-        'link_url'  => '#',
+        'link_url'  => cp_route('oh-dear.certificate-health'),
         'link_text' => __('oh-dear::lang.view_latest_report'),
     ])
 

@@ -75,6 +75,10 @@ class OhDear {
         return $this->site->mixedContent();
     }
 
+    public function certificate() {
+        return $this->site->certificateHealth();
+    }
+
     public function url() {
         return [
             'name' => $this->site->sortUrl,
