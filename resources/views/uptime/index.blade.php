@@ -27,7 +27,7 @@
                     <td>{{ $day['uptimePercentage'] }}%</td>
                 </tr>
              @empty
-                No Entries yet
+                No entries yet
             @endforelse
         </table>
 
@@ -39,7 +39,7 @@
                     <td>{{ $month['uptimePercentage'] }}%</td>
                 </tr>
             @empty
-                No Entries yet
+                No entries yet
             @endforelse
         </table>
 
