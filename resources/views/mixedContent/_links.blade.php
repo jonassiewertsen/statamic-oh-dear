@@ -1,9 +1,9 @@
 <table class="w-full pt-1 mt-3">
     <thead>
         <tr class="text-xs">
-            <th class="text-left pt-1 pr-3 text-center">Tag</th>
-            <th class="text-left pt-1">Found</th>
-            <th class="text-left pt-1">Mixed content url</th>
+            <th class="text-left pt-1 pr-3 text-center">{{ __('oh-dear::lang.tag') }}</th>
+            <th class="text-left pt-1">{{ __('oh-dear::lang.found') }}</th>
+            <th class="text-left pt-1">{{ __('oh-dear::lang.mixed_content_url') }}</th>
         </tr>
     </thead>
     <tbody>

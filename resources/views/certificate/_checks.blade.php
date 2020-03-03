@@ -1,4 +1,4 @@
-<h2 class="font-bold mt-4 mb-1">Certificate checks</h2>
+<h2 class="font-bold mt-4 mb-1">{{ __('oh-dear::lang.certificate_checks') }}</h2>
 <table class="w-full">
     @foreach ($certificate->certificateChecks as $check)
         <tr>

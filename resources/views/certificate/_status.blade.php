@@ -1,9 +1,9 @@
 @if ($certificateCheck)
     @component('oh-dear::partials.info', ['type' => 'success'])
-        No certificate problems detected on {{ $url['name'] }}.
+        {{ __('oh-dear::lang.no_certificate_problems_detected', ['url' => $url['name'] ]) }}.
     @endcomponent
 @else
     @component('oh-dear::partials.info', ['type' => 'failed'])
-        Certificate healt problems detected!
+        {{ __('oh-dear::lang.certificate_problems_detected') }}
     @endcomponent
 @endif

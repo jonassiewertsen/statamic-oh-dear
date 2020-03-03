@@ -1,9 +1,9 @@
 <table class="w-full pt-1 mt-3">
     <thead>
     <tr class="text-xs">
-        <th class="w-24 text-left pt-1">Status Code</th>
-        <th class="text-left pt-1">Internal broken links</th>
-        <th class="text-left pt-1">Found on</th>
+        <th class="w-24 text-left pt-1">{{ __('oh-dear::lang.status_code') }}</th>
+        <th class="text-left pt-1">{{ __('oh-dear::lang.internal_broken_links') }}</th>
+        <th class="text-left pt-1">{{ __('oh-dear::lang.found_on') }}</th>
     </tr>
     </thead>
     <tbody>

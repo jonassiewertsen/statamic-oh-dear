@@ -3,7 +3,7 @@
 
 @section('content')
     @component('oh-dear::partials.card_header')
-        Uptime
+        {{ __('oh-dear::lang.uptime') }}
     @endcomponent
 
     @component('oh-dear::partials.card')

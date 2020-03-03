@@ -6,7 +6,7 @@
         @include('oh-dear::overview._label', [
             'success'   => $checks['broken_links'],
             'message_success' => __('oh-dear::lang.none'),
-            'message_failed' => 'Site is down', // TODO: translate
+            'message_failed' => __('oh-dear::lang.found'),
         ])
     @endslot
     @slot('link_url')

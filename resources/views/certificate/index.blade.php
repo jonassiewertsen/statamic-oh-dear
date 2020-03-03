@@ -3,7 +3,7 @@
 
 @section('content')
     @component('oh-dear::partials.card_header')
-        Certificate Health
+       {{ __('oh-dear::lang.certificate_health') }}
     @endcomponent
 
     @component('oh-dear::partials.card')

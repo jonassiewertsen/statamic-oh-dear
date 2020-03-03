@@ -3,7 +3,7 @@
 
 @section('content')
     @component('oh-dear::partials.card_header')
-        Broken Links
+        {{ __('oh-dear::lang.broken_links') }}
     @endcomponent
 
     @component('oh-dear::partials.card')

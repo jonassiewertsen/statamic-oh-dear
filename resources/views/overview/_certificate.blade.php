@@ -5,8 +5,8 @@
     @slot('label')
         @include('oh-dear::overview._label', [
             'success'   => $checks['certificate'],
-            'message_success' => __('oh-dear::lang.secure'),
-            'message_failed' => 'Insecure', // TODO: translate
+            'message_success' => __('oh-dear::lang.healthy'),
+            'message_failed' => __('oh-dear::lang.unhealthy'),
         ])
     @endslot
     @slot('link_url')
