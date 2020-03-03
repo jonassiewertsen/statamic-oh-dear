@@ -8,6 +8,7 @@ class UptimeController {
     public function index() {
         $ohdear = new OhDear;
 
+        // TODO: Add the option, that checks can be disabled
         $pastDays   = $ohdear->uptime(now()->subDays(6), now(), 'day');
         $pastMonths = $ohdear->uptime(now()->subMonths(11), now(), 'month');
         $downtimes  = $ohdear->downtime(now()->subMonths(5), now());

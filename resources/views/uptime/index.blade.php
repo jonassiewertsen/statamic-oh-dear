@@ -23,8 +23,8 @@
         <table class="w-full pt-1">
             @forelse ($pastDays as $day)
                 <tr>
-                    <td class="w-1/4">{{ $day['datetime'] }}</td>
-                    <td>{{ $day['uptimePercentage'] }}%</td>
+                    <td class="pb-1 w-1/4">{{ $day['datetime'] }}</td>
+                    <td class="pb-1">{{ $day['uptimePercentage'] }}%</td>
                 </tr>
              @empty
                 No entries yet
@@ -35,8 +35,8 @@
         <table class="w-full pt-1">
             @forelse ($pastMonths as $month)
                 <tr>
-                    <td class="w-1/4">{{ $month['datetime'] }}</td>
-                    <td>{{ $month['uptimePercentage'] }}%</td>
+                    <td class="pb-1 w-1/4">{{ $month['datetime'] }}</td>
+                    <td class="pb-1">{{ $month['uptimePercentage'] }}%</td>
                 </tr>
             @empty
                 No entries yet
@@ -47,24 +47,24 @@
         <table class="w-full pt-1">
             <thead>
                 <tr class="text-xs">
-                    <th class="w-2/5 text-left">Started at</th>
-                    <th class="w-2/5 text-left">Ended at</th>
-                    <th class="w-1/5 text-left">Duration</th>
+                    <th class="w-2/5 text-left pb-1">Started at</th>
+                    <th class="w-2/5 text-left pb-1">Ended at</th>
+                    <th class="w-1/5 text-left pb-1">Duration</th>
                 </tr>
             </thead>
-            @forelse($downtimes as $downtime)
-                <tbody>
+            <tbody>
+                @forelse($downtimes as $downtime)
                     <tr>
-                        <th class="w-2/5 text-left font-normal">{{ $downtime->startedAt }}</th>
-                        <th class="w-2/5 text-left font-normal">{{ $downtime->endedAt }}</th>
-                        <th class="w-1/5 text-left font-normal">Duration</th>
+                        <td class="w-2/5 text-left font-normal pb-1">{{ $downtime->startedAt }}</td>
+                        <td class="w-2/5 text-left font-normal pb-1">{{ $downtime->endedAt }}</td>
+                        <td class="w-1/5 text-left font-normal pb-1">Duration</td>
                     </tr>
-                </tbody>
-            @empty
-                <tr>
-                    <td colspan="3">No downtimes detected in the past 6 month</td>
-                </tr>
-            @endforelse
+                @empty
+                    <tr>
+                        <td colspan="3">No downtimes detected in the past 6 month</td>
+                    </tr>
+                @endforelse
+            </tbody>
         </table>
     </div>
 @endsection
