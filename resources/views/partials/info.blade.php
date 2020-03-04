@@ -10,4 +10,10 @@
            {{ $slot }}
         </span>
     </p>
+@elseif ($type === 'disabled')
+    <p class="rounded bg-grey-20 border-l-4 pl-1">
+        <span class="inline-block items-center px-1 py-1">
+           Disabled
+        </span>
+    </p>
 @endif

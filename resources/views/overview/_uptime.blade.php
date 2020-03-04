@@ -4,7 +4,7 @@
     @endslot
     @slot('label')
         @include('oh-dear::overview._label', [
-            'success'   => $checks['uptime']['latest_run_result'],
+            'check'   => $checks['uptime'],
             'message_success' => __('oh-dear::lang.site_up'),
             'message_failed' => __('oh-dear::lang.site_down'),
         ])
