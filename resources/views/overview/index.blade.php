@@ -10,8 +10,5 @@
     @include('oh-dear::overview._broken_links')
     @include('oh-dear::overview._mixed_content')
     @include('oh-dear::overview._certificate')
-
-
-
-
+    
 @endsection
