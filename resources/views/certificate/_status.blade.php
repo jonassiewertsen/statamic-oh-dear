@@ -1,4 +1,4 @@
-@if ($certificateCheck)
+@if ($certificateCheck['latest_run_result'] === 'succeeded')
     @component('oh-dear::partials.info', ['type' => 'success'])
         {{ __('oh-dear::lang.no_certificate_problems_detected', ['url' => $url['name'] ]) }}.
     @endcomponent
