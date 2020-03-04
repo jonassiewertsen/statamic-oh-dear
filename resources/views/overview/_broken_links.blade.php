@@ -4,7 +4,7 @@
     @endslot
     @slot('label')
         @include('oh-dear::overview._label', [
-            'success'   => $checks['broken_links'],
+            'success'   => $checks['broken_links']['latest_run_result'],
             'message_success' => __('oh-dear::lang.none'),
             'message_failed' => __('oh-dear::lang.found'),
         ])

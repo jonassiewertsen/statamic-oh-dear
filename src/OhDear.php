@@ -94,42 +94,27 @@ class OhDear {
         $uptime = collect($this->site->checks)
                     ->where('type', 'uptime');
 
-        $uptime = $uptime->first()->attributes;
-
-        return $this->succeeded($uptime['latest_run_result']);
+        return $uptime->first()->attributes;
     }
 
     public function brokenLinksCheck() {
         $links = collect($this->site->checks)
             ->where('type', 'broken_links');
 
-        $links =  $links->first()->attributes;
-
-        return $this->succeeded($links['latest_run_result']);
+        return  $links->first()->attributes;
     }
 
     public function mixedContentCheck() {
         $contents = collect($this->site->checks)
             ->where('type', 'mixed_content');
 
-        $contents = $contents->first()->attributes;
-
-        return $this->succeeded($contents['latest_run_result']);
+        return $contents->first()->attributes;
     }
 
     public function certificateCheck() {
         $certificate = collect($this->site->checks)
             ->where('type', 'certificate_health');
 
-        $certificate = $certificate->first()->attributes;
-
-        return $this->succeeded($certificate['latest_run_result']);
-    }
-
-    private function succeeded($value) {
-        if ($value === 'succeeded') {
-            return true;
-        }
-        return false;
+        return $certificate->first()->attributes;
     }
 }
