@@ -20,10 +20,12 @@ class OhDear {
     public $site;
 
     public function __construct() {
+        // TODO: Add a catch block
         $this->ohDear   = new OhdearSDK(config('oh-dear.api_key'));
         $this->site     = $this->ohDear->site(config('oh-dear.site_id'));
     }
 
+    // TODO: Doc blocks missing
     public function uptime($start, $end, $split) {
         $uptime = $this->site->uptime(
             $start->format('YmdHis'),
