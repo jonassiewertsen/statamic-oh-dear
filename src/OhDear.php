@@ -31,6 +31,14 @@ class OhDear {
         }
     }
 
+    /**
+     * Uptime records in the specific time frame
+     *
+     * @param $start
+     * @param $end
+     * @param $split
+     * @return \Illuminate\Support\Collection
+     */
     public function uptime($start, $end, $split) {
         $uptime = $this->site->uptime(
             $start->format('YmdHis'),
@@ -50,6 +58,13 @@ class OhDear {
         });
     }
 
+    /**
+     * Downtime records in the specific time frame
+     *
+     * @param $start
+     * @param $end
+     * @return \Illuminate\Support\Collection
+     */
     public function downtime($start, $end) {
         $downtime =  $this->site->downtime(
             $start->format('YmdHis'),
@@ -70,18 +85,38 @@ class OhDear {
         });
     }
 
+    /**
+     * Broken links records
+     *
+     * @return array
+     */
     public function brokenLinks() {
         return $this->site->brokenLinks();
     }
 
+    /**
+     * Mixed content records
+     *
+     * @return array
+     */
     public function mixedContent() {
         return $this->site->mixedContent();
     }
 
+    /**
+     * Certificate records
+     *
+     * @return array
+     */
     public function certificate() {
         return $this->site->certificateHealth();
     }
 
+    /**
+     * URL informations from the choosen OhDear Site
+     *
+     * @return array
+     */
     public function url() {
         return [
             'name' => $this->site->sortUrl,
@@ -89,10 +124,20 @@ class OhDear {
         ];
     }
 
+    /**
+     * The OhDear Checks
+     *
+     * @return array|\OhDear\PhpSdk\Resources\Check[]
+     */
     public function checks() {
         return $this->site->checks;
     }
 
+    /**
+     * Only the uptime check
+     *
+     * @return mixed
+     */
     public function uptimeCheck() {
         $uptime = collect($this->site->checks)
                     ->where('type', 'uptime');
@@ -100,6 +145,11 @@ class OhDear {
         return $uptime->first()->attributes;
     }
 
+    /**
+     * Only the broken links check
+     *
+     * @return mixed
+     */
     public function brokenLinksCheck() {
         $links = collect($this->site->checks)
             ->where('type', 'broken_links');
@@ -107,6 +157,11 @@ class OhDear {
         return  $links->first()->attributes;
     }
 
+    /**
+     * Only the mixed content check
+     *
+     * @return mixed
+     */
     public function mixedContentCheck() {
         $contents = collect($this->site->checks)
             ->where('type', 'mixed_content');
@@ -114,6 +169,11 @@ class OhDear {
         return $contents->first()->attributes;
     }
 
+    /**
+     * Only the certificate health check
+     *
+     * @return mixed
+     */
     public function certificateCheck() {
         $certificate = collect($this->site->checks)
             ->where('type', 'certificate_health');
