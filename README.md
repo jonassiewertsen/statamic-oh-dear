@@ -10,7 +10,7 @@ Check your monitored uptime, SSL certificates, mixed content and broken links ea
 To use this addon, you need to have an [OhDear](https://ohdear.app) account. 
 
 ## Installation
- ### Step 1
+### Step 1
  Pull in your package with composer
  ```bash
 composer require jonassiewertsen/statamic-oh-dear
@@ -25,3 +25,12 @@ Add your [Oh Dear API](https://ohdear.app/docs/integrations/api/authentication#g
 OH_DEAR_API_KEY="XXXXXXXX"
 OH_DEAR_SITE_ID=XXXXXXXXX
 ```
+## Add the Widget
+To add a small widget to the dashboard, you need to tell your config file. 
+Open `config/statamic/cp.php` and look for the "Dashboard widgets" section and add it. 
+
+```php
+'widgets' => [
+  'oh_dear', 
+  // mabye other widgets
+],

@@ -33,6 +33,7 @@ return [
     'past_months'                        => 'Past :months months',
     'probem_occurred'                    => 'A Problem occurred. Please try again later.',
     'secure'                             => 'Secure',
+    'show_more'                          => 'Show more',
     'site_up'                            => 'Site is up',
     'site_down'                          => 'Site is down',
     'status_code'                        => 'Status Code',

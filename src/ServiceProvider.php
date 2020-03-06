@@ -12,7 +12,7 @@ class ServiceProvider extends AddonServiceProvider
     ];
 
     protected $widgets = [
-        // TODO: Add a widget for the dashboard
+        \Jonassiewertsen\OhDear\Widgets\OhDear::class,
     ];
 
     public function boot()
