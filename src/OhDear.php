@@ -12,6 +12,7 @@ class OhDear {
      * @var OhdearSDK
      */
     public $ohDear;
+
     /**
      * The specific monitored Oh Dear site
      *
@@ -35,9 +36,7 @@ class OhDear {
         $uptime = collect($uptime);
 
         $uptime->transform(function($entry) {
-
-            // TODO: Make format customizable. Loalized?
-            // TODO: Carbon format into helper function?
+            // formatting the datetime
             $datetime = Carbon::parse($entry->datetime)->format('Y-m-d');
 
             return [
