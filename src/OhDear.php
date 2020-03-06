@@ -31,7 +31,6 @@ class OhDear {
         }
     }
 
-    // TODO: Doc blocks missing
     public function uptime($start, $end, $split) {
         $uptime = $this->site->uptime(
             $start->format('YmdHis'),
@@ -40,7 +39,7 @@ class OhDear {
 
         $uptime = collect($uptime);
 
-        $uptime->transform(function($entry) {
+        return $uptime->transform(function($entry) {
             // formatting the datetime
             $datetime = Carbon::parse($entry->datetime)->format('Y-m-d');
 
@@ -49,8 +48,6 @@ class OhDear {
               'uptimePercentage' => $entry->uptimePercentage,
             ];
         });
-
-        return $uptime;
     }
 
     public function downtime($start, $end) {
