@@ -7,9 +7,6 @@ use Statamic\Providers\AddonServiceProvider;
 
 class ServiceProvider extends AddonServiceProvider
 {
-    // TODO: Maybe I should add a Oh Dear link directly to the dashboard?
-    // TODO: Add the monitored sitename to the overview page
-
     protected $routes = [
         'cp' => __DIR__ . '/../routes/cp.php',
     ];
