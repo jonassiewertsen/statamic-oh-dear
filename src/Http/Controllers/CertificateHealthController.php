@@ -4,13 +4,15 @@ namespace Jonassiewertsen\OhDear\Http\Controllers;
 
 use Jonassiewertsen\OhDear\OhDear;
 
-class CertificateHealthController {
+class CertificateHealthController extends Controller {
     public function index() {
-        $ohdear = new OhDear;
+        if ($this->ohdear === null) {
+            return $this->errorView();
+        }
 
-        $certificate        = $ohdear->certificate();
-        $certificateCheck   = $ohdear->certificateCheck();
-        $url                = $ohdear->url();
+        $certificate        = $this->ohdear->certificate();
+        $certificateCheck   = $this->ohdear->certificateCheck();
+        $url                = $this->ohdear->url();
 
         return view('oh-dear::certificate.index', compact('certificate', 'certificateCheck', 'url'));
     }

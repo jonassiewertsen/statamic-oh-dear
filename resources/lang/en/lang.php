@@ -30,7 +30,8 @@ return [
     'no_entries_yet'                     => 'No entries yet',
     'no_mixed_content_found'             => 'No mixed content found on :url',
     'past_days'                          => 'Past :days days',
-    'past_months'                          => 'Past :months months',
+    'past_months'                        => 'Past :months months',
+    'probem_occurred'                    => 'A Problem occurred. Please try again later.',
     'secure'                             => 'Secure',
     'site_up'                            => 'Site is up',
     'site_down'                          => 'Site is down',
@@ -40,5 +41,6 @@ return [
     'unhealthy'                          => 'Unhealthy',
     'uptime'                             => 'Uptime',
     'uptime_success_message'             => 'Your site is up. We last checked :time.',
+    'ups'                                => 'Uuuppppppssssss',
     'view_latest_report'                 => 'View the latest Report',
 ];

@@ -4,18 +4,20 @@ namespace Jonassiewertsen\OhDear\Http\Controllers;
 
 use Jonassiewertsen\OhDear\OhDear;
 
-class OverviewController {
+class OverviewController extends Controller {
     public function index() {
-        $ohdear = new OhDear;
+        if ($this->ohdear === null) {
+            return $this->errorView();
+        }
 
         $checks = [
-            'uptime'        => $ohdear->uptimeCheck(),
-            'broken_links'  => $ohdear->brokenLinksCheck(),
-            'mixed_content' => $ohdear->mixedContentCheck(),
-            'certificate'   => $ohdear->certificateCheck(),
+            'uptime'        => $this->ohdear->uptimeCheck(),
+            'broken_links'  => $this->ohdear->brokenLinksCheck(),
+            'mixed_content' => $this->ohdear->mixedContentCheck(),
+            'certificate'   => $this->ohdear->certificateCheck(),
         ];
 
-        $url = $ohdear->url();
+        $url = $this->ohdear->url();
 
         return view('oh-dear::overview.index', compact('checks', 'url'));
     }

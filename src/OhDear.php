@@ -21,9 +21,14 @@ class OhDear {
     public $site;
 
     public function __construct() {
-        // TODO: Add a catch block
-        $this->ohDear   = new OhdearSDK(config('oh-dear.api_key'));
-        $this->site     = $this->ohDear->site(config('oh-dear.site_id'));
+        try {
+            $this->ohDear   = new OhdearSDK(config('oh-dear.api_key'));
+            $this->site     = $this->ohDear->site(config('oh-dear.site_id'));
+        } catch (\Exception $e) {
+            // Setting values to null, in case something goes wrong.
+            $this->ohDear   = null;
+            $this->site     = null;
+        }
     }
 
     // TODO: Doc blocks missing

@@ -4,13 +4,15 @@ namespace Jonassiewertsen\OhDear\Http\Controllers;
 
 use Jonassiewertsen\OhDear\OhDear;
 
-class MixedContentController {
+class MixedContentController extends Controller {
     public function index() {
-        $ohdear = new OhDear;
+        if ($this->ohdear === null) {
+            return $this->errorView();
+        }
 
-        $mixedContent       = $ohdear->mixedContent();
-        $mixedContentCheck  = $ohdear->mixedContentCheck();
-        $url                = $ohdear->url();
+        $mixedContent       = $this->ohdear->mixedContent();
+        $mixedContentCheck  = $this->ohdear->mixedContentCheck();
+        $url                = $this->ohdear->url();
 
         return view('oh-dear::mixedContent.index', compact('mixedContent', 'mixedContentCheck', 'url'));
     }

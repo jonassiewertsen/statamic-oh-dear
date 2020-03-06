@@ -4,13 +4,15 @@ namespace Jonassiewertsen\OhDear\Http\Controllers;
 
 use Jonassiewertsen\OhDear\OhDear;
 
-class BrokenLinksController {
+class BrokenLinksController extends Controller {
     public function index() {
-        $ohdear = new OhDear;
+        if ($this->ohdear === null) {
+            return $this->errorView();
+        }
 
-        $brokenLinks        = $ohdear->brokenLinks();
-        $brokenLinksCheck   = $ohdear->brokenLinksCheck();
-        $url                = $ohdear->url();
+        $brokenLinks        = $this->ohdear->brokenLinks();
+        $brokenLinksCheck   = $this->ohdear->brokenLinksCheck();
+        $url                = $this->ohdear->url();
 
         return view('oh-dear::brokenLinks.index', compact('brokenLinks', 'brokenLinksCheck', 'url'));
     }
