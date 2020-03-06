@@ -15,6 +15,8 @@ class OverviewController {
             'certificate'   => $ohdear->certificateCheck(),
         ];
 
-        return view('oh-dear::overview.index', compact('checks'));
+        $url = $ohdear->url();
+
+        return view('oh-dear::overview.index', compact('checks', 'url'));
     }
 }
