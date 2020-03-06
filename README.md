@@ -26,7 +26,7 @@ OH_DEAR_API_KEY="XXXXXXXX"
 OH_DEAR_SITE_ID=XXXXXXXXX
 ```
 ## Add the Widget
-To add a small widget to the dashboard, you need to tell your config file. 
+To add a small widget to your dashboard, tell your config file to do so. 
 Open `config/statamic/cp.php` and look for the "Dashboard widgets" section and add it. 
 
 ```php
