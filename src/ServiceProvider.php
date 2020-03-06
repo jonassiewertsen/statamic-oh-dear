@@ -42,8 +42,13 @@ class ServiceProvider extends AddonServiceProvider
             $nav->create('Oh Dear')
                 ->icon('earth')
                 ->section('Tools')
-                ->route('oh-dear.index');
+                ->route('oh-dear.index')
+                ->children([
+                    $nav->item(__('oh-dear::lang.uptime'))->route('oh-dear.uptime'),
+                    $nav->item(__('oh-dear::lang.broken_links'))->route('oh-dear.broken-links'),
+                    $nav->item(__('oh-dear::lang.mixed_content'))->route('oh-dear.mixed-content'),
+                    $nav->item(__('oh-dear::lang.certificate_health'))->route('oh-dear.certificate-health'),
+                ]);
         });
-        // TODO: Add child navigation
     }
 }
