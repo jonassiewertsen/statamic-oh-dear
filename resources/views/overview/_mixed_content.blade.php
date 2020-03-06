@@ -12,5 +12,5 @@
     @slot('link_url')
         {{ cp_route('oh-dear.mixed-content') }}
     @endslot
-    {{ __('oh-dear::lang.mixed_content_success_message', ['time' => 'something']) }}
+    {{ __('oh-dear::lang.mixed_content_success_message', ['time' => $checks['mixed_content']['latest_run']]) }}
 @endcomponent

@@ -142,7 +142,7 @@ class OhDear {
         $uptime = collect($this->site->checks)
                     ->where('type', 'uptime');
 
-        return $uptime->first()->attributes;
+        return $this->addLastRun($uptime->first()->attributes);
     }
 
     /**
@@ -154,7 +154,7 @@ class OhDear {
         $links = collect($this->site->checks)
             ->where('type', 'broken_links');
 
-        return  $links->first()->attributes;
+        return $this->addLastRun($links->first()->attributes);
     }
 
     /**
@@ -166,7 +166,7 @@ class OhDear {
         $contents = collect($this->site->checks)
             ->where('type', 'mixed_content');
 
-        return $contents->first()->attributes;
+        return $this->addLastRun($contents->first()->attributes);
     }
 
     /**
@@ -178,6 +178,19 @@ class OhDear {
         $certificate = collect($this->site->checks)
             ->where('type', 'certificate_health');
 
-        return $certificate->first()->attributes;
+        return $this->addLastRun($certificate->first()->attributes);
+    }
+
+    /**
+     * Adding the last run in diff for human string
+     *
+     * @param $attributes
+     * @return array
+     */
+    private function addLastRun($attributes) {
+        return array_merge(
+            $attributes,
+            ['latest_run' => Carbon::parse($attributes['latest_run_ended_at'])->diffForHumans()]
+        );
     }
 }

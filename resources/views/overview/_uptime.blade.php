@@ -12,5 +12,5 @@
     @slot('link_url')
         {{ cp_route('oh-dear.uptime') }}
     @endslot
-    {{ __('oh-dear::lang.uptime_success_message', ['time' => 'something']) }}
+    {{ __('oh-dear::lang.uptime_success_message', ['time' => $checks['uptime']['latest_run']]) }}
 @endcomponent

@@ -12,5 +12,5 @@
     @slot('link_url')
         {{ cp_route('oh-dear.broken-links') }}
     @endslot
-    {{ __('oh-dear::lang.broken_links_success_message', ['time' => 'something']) }}
+    {{ __('oh-dear::lang.broken_links_success_message', ['time' => $checks['broken_links']['latest_run']]) }}
 @endcomponent
