@@ -11,8 +11,8 @@ To use this addon, you need to have an [OhDear](https://ohdear.app) account.
 
 ## Installation
 ### Step 1
- Pull in your package with composer
- ```bash
+Pull in your package with composer
+```bash
 composer require jonassiewertsen/statamic-oh-dear
 ```
 
@@ -34,3 +34,4 @@ Open `config/statamic/cp.php` and look for the "Dashboard widgets" section and a
   'oh_dear', 
   // mabye other widgets
 ],
+``` 
