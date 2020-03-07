@@ -35,3 +35,9 @@ Open `config/statamic/cp.php` and look for the "Dashboard widgets" section and a
   // mabye other widgets
 ],
 ``` 
+
+# License 
+
+Before going into productions with *Statamic Oh Dear*, you need to buy a license at the [Statamic Marketplace](https://statamic.com/marketplace/addons/oh-dear). 
+
+*Statamic Oh Dear* is not free software. 
