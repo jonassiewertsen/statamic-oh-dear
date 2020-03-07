@@ -3,7 +3,7 @@
 namespace Jonassiewertsen\OhDear;
 
 use Illuminate\Support\Carbon;
-use \OhDear\PhpSdk\Ohdear as OhdearSDK;
+use OhDear\PhpSdk\Ohdear as OhdearSDK;
 
 class OhDear {
     /**
