@@ -3,13 +3,13 @@
 namespace Jonassiewertsen\OhDear;
 
 use Illuminate\Support\Carbon;
-use OhDear\PhpSdk\Ohdear as OhdearSDK;
+use OhDear\PhpSdk\OhDear as OhDearSDK;
 
 class OhDear {
     /**
      * The Odear instance
      *
-     * @var OhdearSDK
+     * @var OhDearSDK
      */
     public $ohDear;
 
@@ -22,7 +22,7 @@ class OhDear {
 
     public function __construct() {
         try {
-            $this->ohDear   = new OhdearSDK(config('oh-dear.api_key'));
+            $this->ohDear   = new OhDearSDK(config('oh-dear.api_key'));
             $this->site     = $this->ohDear->site(config('oh-dear.site_id'));
         } catch (\Exception $e) {
             // Setting values to null, in case something goes wrong.
