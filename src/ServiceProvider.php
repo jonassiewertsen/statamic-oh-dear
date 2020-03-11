@@ -3,6 +3,7 @@
 namespace Jonassiewertsen\OhDear;
 
 use Statamic\Facades\Nav;
+use Statamic\Facades\Permission;
 use Statamic\Providers\AddonServiceProvider;
 
 class ServiceProvider extends AddonServiceProvider
@@ -34,6 +35,7 @@ class ServiceProvider extends AddonServiceProvider
         }
 
         $this->bootNavigation();
+        $this->bootPermissions();
     }
 
     private function bootNavigation(): void
@@ -43,12 +45,22 @@ class ServiceProvider extends AddonServiceProvider
                 ->icon('earth')
                 ->section('Tools')
                 ->route('oh-dear.index')
+                ->can('show ohdear')
                 ->children([
                     $nav->item(__('oh-dear::lang.uptime'))->route('oh-dear.uptime'),
                     $nav->item(__('oh-dear::lang.broken_links'))->route('oh-dear.broken-links'),
                     $nav->item(__('oh-dear::lang.mixed_content'))->route('oh-dear.mixed-content'),
                     $nav->item(__('oh-dear::lang.certificate_health'))->route('oh-dear.certificate-health'),
                 ]);
+        });
+    }
+
+    private function bootPermissions() {
+        $this->app->booted(function () {
+            Permission::group('ohdear', 'Oh Dear', function () {
+                Permission::register('show ohdear')
+                    ->label(__('oh-dear::lang.show'));
+            });
         });
     }
 }

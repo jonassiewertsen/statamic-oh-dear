@@ -3,8 +3,9 @@
 namespace Jonassiewertsen\OhDear\Http\Controllers;
 
 use Jonassiewertsen\OhDear\OhDear;
+use Statamic\Http\Controllers\CP\CpController as StatamicCpController;
 
-abstract class Controller {
+abstract class Controller extends StatamicCpController {
     /**
      * @var OhDear|null
      */

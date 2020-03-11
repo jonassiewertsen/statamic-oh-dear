@@ -3,6 +3,7 @@
 namespace Jonassiewertsen\OhDear\Widgets;
 
 use Statamic\Widgets\Widget;
+use Statamic\Facades\User;
 use Jonassiewertsen\OhDear\OhDear as OhDearInstance;
 
 class OhDear extends Widget
@@ -14,8 +15,13 @@ class OhDear extends Widget
      */
     public function html()
     {
+        if (! User::current()->can('show ohdear')) {
+            return;
+        }
+
         $ohdear = new OhDearInstance();
 
+        // Prevent the Widget from showing, when the token or site has not been set
        if ($ohdear->ohDear === null || $ohdear->site === null) {
             return;
         }

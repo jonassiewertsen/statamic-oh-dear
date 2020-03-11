@@ -2,10 +2,10 @@
 
 namespace Jonassiewertsen\OhDear\Http\Controllers;
 
-use Jonassiewertsen\OhDear\OhDear;
-
 class UptimeController extends Controller {
     public function index() {
+        $this->authorize('show ohdear');
+
         if ($this->ohdear === null) {
             return $this->errorView();
         }
