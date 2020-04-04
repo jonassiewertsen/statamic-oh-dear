@@ -2,7 +2,7 @@
 
 namespace Jonassiewertsen\OhDear;
 
-use Statamic\Facades\Nav;
+use Statamic\Facades\CP\Nav;
 use Statamic\Facades\Permission;
 use Statamic\Providers\AddonServiceProvider;
 
