@@ -3,6 +3,7 @@
 namespace Jonassiewertsen\OhDear;
 
 use Illuminate\Support\Carbon;
+use Jonassiewertsen\OhDear\Exceptions\OhDearCredentialsNotProvidedException;
 use OhDear\PhpSdk\OhDear as OhDearSDK;
 
 class OhDear {
@@ -20,7 +21,17 @@ class OhDear {
      */
     public $site;
 
+    /**
+     * Instanciate OhDear
+     * @throws OhDearCredentialsNotProvidedException
+     */
     public function __construct() {
+        // Throw an exception, in case the API key or site id have not been provided
+        // In case you do wonder: They should be in your .env file
+        if (config('oh-dear.api_key') === null || config('oh-dear.site_id') === null) {
+            throw new OhDearCredentialsNotProvidedException;
+        }
+
         try {
             $this->ohDear   = new OhDearSDK(config('oh-dear.api_key'));
             $this->site     = $this->ohDear->site(config('oh-dear.site_id'));
