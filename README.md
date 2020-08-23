@@ -25,6 +25,32 @@ Add your [Oh Dear API](https://ohdear.app/docs/integrations/api/authentication#g
 OH_DEAR_API_KEY="XXXXXXXX"
 OH_DEAR_SITE_ID=XXXXXXXXX
 ```
+
+## Maintenance Periods
+When deploying, often your site will be down for a few minutes, which is totally ok. If not telling Oh Dear about, it
+will detect the downtime and may send mails to you and maybe your clients. You Uptime charts will show this downtime as well.
+
+To avoid this behavior, you can define maintenance periods with Oh Dear and this Statamic Oh Dear integration will
+take care of it for you. 
+
+There are two options available:
+
+### Auto Maintenance Mode
+Are you deploying (fx with Forge) and making use of the `php artisan down` and `php artisan up` command? Perfect. 
+Turn on the auto maintenance mode on and we will hook into those commands, so you don't need to worry about anything. 
+
+```
+// Inside your .env file
+OH_DEAR_AUTO_MAINTENANCE=true
+```
+
+### Maintenance commands
+You want to stay in control? No problem. You can use the following commands:
+```
+php please ohdear:maintenance start
+php please ohdear:maintenance stop
+```
+
 ## Add the Widget
 To add a small widget to your dashboard, tell your config file to do so. 
 Open `config/statamic/cp.php` and look for the "Dashboard widgets" section and add it. 
