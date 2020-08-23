@@ -2,6 +2,7 @@
 
 namespace Jonassiewertsen\OhDear;
 
+use Jonassiewertsen\OhDear\Providers\CommandServiceProvider;
 use Statamic\Facades\CP\Nav;
 use Statamic\Facades\Permission;
 use Statamic\Providers\AddonServiceProvider;
@@ -36,6 +37,7 @@ class ServiceProvider extends AddonServiceProvider
 
         $this->bootNavigation();
         $this->bootPermissions();
+        $this->registerServiceProviders();
     }
 
     private function bootNavigation(): void
@@ -55,7 +57,7 @@ class ServiceProvider extends AddonServiceProvider
         });
     }
 
-    private function bootPermissions()
+    private function bootPermissions(): void
     {
         $this->app->booted(function () {
             Permission::group('ohdear', 'Oh Dear', function () {
@@ -63,5 +65,10 @@ class ServiceProvider extends AddonServiceProvider
                     ->label(__('oh-dear::lang.show'));
             });
         });
+    }
+
+    private function registerServiceProviders(): void
+    {
+        $this->app->register(CommandServiceProvider::class);
     }
 }

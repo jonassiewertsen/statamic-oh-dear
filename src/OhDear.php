@@ -206,6 +206,26 @@ class OhDear
     }
 
     /**
+     * Start the maintenance window
+     *
+     * @return mixed
+     */
+    public function startMaintenance(): void
+    {
+        $this->site->startMaintenance();
+    }
+
+    /**
+     * Stop the maintenance window
+     *
+     * @return mixed
+     */
+    public function stopMainenance(): void
+    {
+        $this->site->stopMaintenance();
+    }
+
+    /**
      * Adding the last run in diff for human string
      *
      * @param $attributes
