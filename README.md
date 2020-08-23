@@ -36,8 +36,10 @@ Open `config/statamic/cp.php` and look for the "Dashboard widgets" section and a
 ],
 ``` 
 
+# Support
+I love to share with the community. Nevertheless, it does take a lot of work, time and effort. 
+
+[Sponsor me on GitHub](https://github.com/sponsors/jonassiewertsen/) to support my work and the support for this addon.
+
 # License 
-
-Before going into productions with *Statamic Oh Dear*, you need to buy a license at the [Statamic Marketplace](https://statamic.com/marketplace/addons/oh-dear). 
-
-*Statamic Oh Dear* is not free software. 
+This plugin is published under the MIT license. Feel free to use it and remember to spread love.
