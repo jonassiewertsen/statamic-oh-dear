@@ -2,8 +2,10 @@
 
 namespace Jonassiewertsen\OhDear\Http\Controllers;
 
-class OverviewController extends Controller {
-    public function index() {
+class OverviewController extends Controller
+{
+    public function index()
+    {
         $this->authorize('show ohdear');
 
         if ($this->ohdear === null) {

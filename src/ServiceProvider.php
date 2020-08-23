@@ -26,7 +26,7 @@ class ServiceProvider extends AddonServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/jonassiewertsen/ohDear/'),
+                __DIR__ . '/../resources/lang' => resource_path('lang/vendor/jonassiewertsen/ohDear/'),
             ], 'Statamic Oh Dear lang file');
 
             $this->publishes([
@@ -55,7 +55,8 @@ class ServiceProvider extends AddonServiceProvider
         });
     }
 
-    private function bootPermissions() {
+    private function bootPermissions()
+    {
         $this->app->booted(function () {
             Permission::group('ohdear', 'Oh Dear', function () {
                 Permission::register('show ohdear')

@@ -5,13 +5,15 @@ namespace Jonassiewertsen\OhDear\Http\Controllers;
 use Jonassiewertsen\OhDear\OhDear;
 use Statamic\Http\Controllers\CP\CpController as StatamicCpController;
 
-abstract class Controller extends StatamicCpController {
+abstract class Controller extends StatamicCpController
+{
     /**
      * @var OhDear|null
      */
     public $ohdear;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->ohdear = $this->fetchOhDear();
     }
 
@@ -20,7 +22,8 @@ abstract class Controller extends StatamicCpController {
      *
      * @return OhDear|null
      */
-    public function fetchOhDear() {
+    public function fetchOhDear()
+    {
         $ohdear = new OhDear;
 
         if ($this->dataNull($ohdear)) {
@@ -33,7 +36,8 @@ abstract class Controller extends StatamicCpController {
     /**
      * Returning the default error view
      */
-    public function errorView() {
+    public function errorView()
+    {
         return response()->view('oh-dear::error.problem');
     }
 
@@ -43,7 +47,8 @@ abstract class Controller extends StatamicCpController {
      * @param $ohdear
      * @return bool
      */
-    private function dataNull($ohdear) {
+    private function dataNull($ohdear)
+    {
         return $ohdear->ohDear === null || $ohdear->site === null;
     }
 }

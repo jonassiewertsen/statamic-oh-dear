@@ -15,14 +15,14 @@ class OhDear extends Widget
      */
     public function html()
     {
-        if (! User::current()->can('show ohdear')) {
+        if (!User::current()->can('show ohdear')) {
             return;
         }
 
         $ohdear = new OhDearInstance();
 
         // Prevent the Widget from showing, when the token or site has not been set
-       if ($ohdear->ohDear === null || $ohdear->site === null) {
+        if ($ohdear->ohDear === null || $ohdear->site === null) {
             return;
         }
 
