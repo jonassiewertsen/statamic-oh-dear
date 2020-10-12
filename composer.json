@@ -24,7 +24,7 @@
   },
   "require": {
     "php": "^7.4",
-    "illuminate/support": "^7.0",
+    "illuminate/support": "^7.0 || ^8.0",
     "statamic/cms": "3.0.*",
     "ohdearapp/ohdear-php-sdk": "^3.0.1"
   },
