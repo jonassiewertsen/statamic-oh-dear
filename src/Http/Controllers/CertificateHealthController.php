@@ -4,7 +4,7 @@ namespace Jonassiewertsen\OhDear\Http\Controllers;
 
 class CertificateHealthController extends Controller
 {
-    public function index()
+    public function __invoke()
     {
         $this->authorize('show ohdear');
 
