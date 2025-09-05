@@ -3,24 +3,18 @@
 namespace Jonassiewertsen\OhDear;
 
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
 use Jonassiewertsen\OhDear\Exceptions\OhDearCredentialsNotProvidedException;
+use OhDear\PhpSdk\Dto\CertificateHealth;
+use OhDear\PhpSdk\Enums\UptimeSplit;
 use OhDear\PhpSdk\OhDear as OhDearSDK;
 
 class OhDear
 {
-    /**
-     * The Odear instance
-     *
-     * @var OhDearSDK
-     */
-    public $ohDear;
-
-    /**
-     * The specific monitored Oh Dear site
-     *
-     * @var \OhDear\PhpSdk\Resources\Site
-     */
-    public $site;
+    public null|OhDearSDK $ohDear;
+    public \OhDear\PhpSdk\Dto\Monitor $site;
+    private null|string $apiKey;
+    private string $siteId;
 
     /**
      * Instanciate OhDear
@@ -28,15 +22,18 @@ class OhDear
      */
     public function __construct()
     {
+        $this->apiKey = config('oh-dear.api_key');
+        $this->siteId = config('oh-dear.site_id');
+
         // Throw an exception, in case the API key or site id have not been provided
         // In case you do wonder: They should be in your .env file
-        if (config('oh-dear.api_key') === null || config('oh-dear.site_id') === null) {
+        if ($this->apiKey === null || $this->siteId === null) {
             throw new OhDearCredentialsNotProvidedException;
         }
 
         try {
-            $this->ohDear = new OhDearSDK(config('oh-dear.api_key'));
-            $this->site   = $this->ohDear->site(config('oh-dear.site_id'));
+            $this->ohDear = new OhDearSDK($this->apiKey);
+            $this->site   = $this->ohDear->monitor($this->siteId);
         } catch (\Exception $e) {
             // Setting values to null, in case something goes wrong.
             $this->ohDear = null;
@@ -47,17 +44,19 @@ class OhDear
     /**
      * Uptime records in the specific time frame
      *
-     * @param $start
-     * @param $end
-     * @param $split
-     * @return \Illuminate\Support\Collection
+     * @param Carbon $start
+     * @param Carbon $end
+     * @param UptimeSplit $split
+     * @return Collection
      */
-    public function uptime($start, $end, $split)
+    public function uptime(Carbon $start, Carbon $end, UptimeSplit $split): Collection
     {
-        $uptime = $this->site->uptime(
-            $start->format('YmdHis'),
-            $end->format('YmdHis'),
-            $split);
+        $uptime = $this->ohDear->uptime(
+            $this->siteId,
+            $start->format('Y-m-d H:i:s'),
+            $end->format('Y-m-d H:i:s'),
+            $split
+        );
 
         $uptime = collect($uptime);
 
@@ -75,15 +74,17 @@ class OhDear
     /**
      * Downtime records in the specific time frame
      *
-     * @param $start
-     * @param $end
-     * @return \Illuminate\Support\Collection
+     * @param Carbon $start
+     * @param Carbon $end
+     * @return Collection
      */
-    public function downtime($start, $end)
+    public function downtime(Carbon $start, Carbon $end): Collection
     {
-        $downtime = $this->site->downtime(
-            $start->format('YmdHis'),
-            $end->format('YmdHis'));
+        $downtime = $this->ohDear->downtime(
+            $this->siteId,
+            $start->format('Y-m-d H:i:s'),
+            $end->format('Y-m-d H:i:s')
+        );
 
         $downtime = collect($downtime);
 
@@ -103,11 +104,11 @@ class OhDear
     /**
      * Broken links records
      *
-     * @return array
+     * @return iterable
      */
-    public function brokenLinks()
+    public function brokenLinks(): iterable
     {
-        return $this->site->brokenLinks();
+        return $this->ohDear->brokenLinks($this->siteId);
     }
 
     /**
@@ -115,27 +116,27 @@ class OhDear
      *
      * @return array
      */
-    public function mixedContent()
+    public function mixedContent(): array
     {
-        return $this->site->mixedContent();
+        return $this->ohDear->mixedContent($this->siteId);
     }
 
     /**
      * Certificate records
      *
-     * @return array
+     * @return CertificateHealth
      */
-    public function certificate()
+    public function certificate(): CertificateHealth
     {
-        return $this->site->certificateHealth();
+        return $this->ohDear->certificateHealth($this->siteId);
     }
 
     /**
-     * URL informations from the choosen OhDear Site
+     * URL information from the chosen OhDear Site
      *
      * @return array
      */
-    public function url()
+    public function url(): array
     {
         return [
             'name' => $this->site->sortUrl,
@@ -156,82 +157,82 @@ class OhDear
     /**
      * Only the uptime check
      *
-     * @return mixed
+     * @return array
      */
-    public function uptimeCheck()
+    public function uptimeCheck(): array
     {
         $uptime = collect($this->site->checks)
             ->where('type', 'uptime');
 
-        return $this->addLastRun($uptime->first()->attributes);
+        return $this->addLastRun($uptime->first());
     }
 
     /**
      * Only the broken links check
      *
-     * @return mixed
+     * @return array
      */
-    public function brokenLinksCheck()
+    public function brokenLinksCheck(): array
     {
         $links = collect($this->site->checks)
             ->where('type', 'broken_links');
 
-        return $this->addLastRun($links->first()->attributes);
+        return $this->addLastRun($links->first());
     }
 
     /**
      * Only the mixed content check
      *
-     * @return mixed
+     * @return array
      */
-    public function mixedContentCheck()
+    public function mixedContentCheck(): array
     {
         $contents = collect($this->site->checks)
             ->where('type', 'mixed_content');
 
-        return $this->addLastRun($contents->first()->attributes);
+        return $this->addLastRun($contents->first());
     }
 
     /**
      * Only the certificate health check
      *
-     * @return mixed
+     * @return array
      */
-    public function certificateCheck()
+    public function certificateCheck(): array
     {
         $certificate = collect($this->site->checks)
             ->where('type', 'certificate_health');
 
-        return $this->addLastRun($certificate->first()->attributes);
+        return $this->addLastRun($certificate->first());
     }
 
     /**
      * Start the maintenance window
      *
-     * @return mixed
+     * @return void
      */
     public function startMaintenance(): void
     {
-        $this->site->startMaintenance();
+        $this->ohDear->startMaintenancePeriod($this->siteId);
     }
 
     /**
      * Stop the maintenance window
      *
-     * @return mixed
+     * @return void
      */
-    public function stopMainenance(): void
+    public function stopMaintenance(): void
     {
-        $this->site->stopMaintenance();
+        $this->ohDear->stopMaintenancePeriod($this->siteId);
     }
 
     /**
      * Adding the last run in diff for human string
      *
-     * @param $attributes
+     * @param array $attributes
      * @return array
      */
-    private function addLastRun($attributes)
+    private function addLastRun(array $attributes): array
     {
         return array_merge(
             $attributes,

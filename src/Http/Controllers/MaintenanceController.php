@@ -19,6 +19,6 @@ class MaintenanceController extends Controller
             return $this->errorView();
         }
 
-        $this->ohdear->stopMainenance();
+        $this->ohdear->stopMaintenance();
     }
 }
