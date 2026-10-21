@@ -1,6 +1,6 @@
 {
   "name": "jonassiewertsen/statamic-oh-dear",
-  "description": "A Oh Dear integration for Statamic v3.",
+  "description": "An Oh Dear integration for Statamic v3, v4 and v5.",
   "keywords": [
     "Statamic",
     "Addon",
@@ -31,7 +31,7 @@
   "extra": {
     "statamic": {
       "name": "Oh Dear",
-      "description": "A Oh Dear integration for Statamic v3."
+      "description": "An Oh Dear integration for Statamic v3, v4 and v5."
     },
     "laravel": {
       "providers": [

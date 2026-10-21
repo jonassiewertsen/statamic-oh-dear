@@ -2,12 +2,12 @@
 ![Statamic 3.0+](https://img.shields.io/badge/Statamic-3.0+-FF269E?style=for-the-badge&link=https://statamic.com)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/jonassiewertsen/statamic-oh-dear.svg?style=for-the-badge)](https://packagist.org/packages/jonassiewertsen/statamic-oh-dear)
 
-A [OhDear](https://ohdear.app) integration for Statamic v3. 
+An [Oh Dear](https://ohdear.app) integration for Statamic v3, v4 and v5. 
 
 Check your monitored uptime, SSL certificates, mixed content and broken links easily from your Statamic control panel. 
 
 ## Oh Dear 
-To use this addon, you need to have an [OhDear](https://ohdear.app) account. 
+To use this addon, you need to have an [Oh Dear](https://ohdear.app) account. 
 
 ## Installation
 ### Step 1
